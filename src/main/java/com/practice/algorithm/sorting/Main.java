@@ -10,6 +10,7 @@ public class Main {
 			System.out.print(arr[i] + " ");
 		}
 		System.out.print("]");
+		
 	}
 
 }
