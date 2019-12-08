@@ -1,5 +1,9 @@
 package com.practice.algorithm.sorting;
-
+/**
+ * 
+ * @author Rahul
+ *swap adjacent elements if they are in wrong order
+ */
 public class BubbleSort {
 	public static void bubbleSort(int arr[]) {
 		int n = arr.length;
@@ -15,12 +19,4 @@ public class BubbleSort {
 		}
 
 	}
-
-	/*
-	 * public static void main(String[] args) {
-	 * 
-	 * int arr[] = new int[] { 6, 1, 8, 7, 3, 13, 9 }; bubbleSort(arr);
-	 * System.out.print("After Sorting : ["); for (int i = 0; i < arr.length;
-	 * i++) { System.out.print(arr[i] + ","); } System.out.print("]"); }
-	 */
 }
