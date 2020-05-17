@@ -26,7 +26,6 @@ public class LRUCache {
 	public void deleteNode(Node node) {
 		node.prev.next = node.next;
 		node.next.prev = node.prev;
-
 	}
 
 	//
