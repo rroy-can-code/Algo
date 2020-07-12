@@ -43,7 +43,6 @@ public class HashTable<Key, Value> {
 				return values[index];
 			index = (index + 1) % capacity;
 		}
-
 		return null;
 	}
 
@@ -51,7 +50,8 @@ public class HashTable<Key, Value> {
 		if (k == null || v == null)
 			return;
 		if (noOfItems > capacity * 0.75) {
-			resize(capacity*2);
+			System.out.println("Doubling the size of hash table");
+			resize(capacity * 2);
 		}
 		int index = hash(k);
 		while (keys[index] != null) {
@@ -70,7 +70,7 @@ public class HashTable<Key, Value> {
 		if (key == null)
 			return;
 		int index = hash(key);
-		while (!keys[index].equals(capacity)) {
+		while (keys[index]!=null && !keys[index].equals(capacity)) {
 			index = (index + 1) % capacity;
 		}
 		keys[index] = null;
@@ -85,7 +85,9 @@ public class HashTable<Key, Value> {
 			put(tempKey, tempVal);
 			index = (index + 1) % capacity;
 			if (noOfItems <= capacity / 3) {
-				resize(capacity/2);//if 1/3 rd is only full resize to save the space
+				System.out.println("Half the size of hash table");
+				resize(capacity / 2);// if 1/3 rd is only full resize to save
+										// the space
 			}
 		}
 	}
@@ -133,5 +135,4 @@ public class HashTable<Key, Value> {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-
 }

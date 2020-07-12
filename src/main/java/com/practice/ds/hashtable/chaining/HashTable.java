@@ -19,7 +19,7 @@ public class HashTable {
 		} else {
 			System.out.println("Collision with given key" + key);
 			HashItems hashItem = hashtable[hashIndex];
-			//find next place till next item is empt
+			//find next place till next item is empty
 			while (hashItem.getNextHashItem() != null) {
 				hashItem = hashItem.getNextHashItem();
 			}
