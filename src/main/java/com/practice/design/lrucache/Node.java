@@ -1,0 +1,51 @@
+package com.practice.design.lrucache;
+
+public class Node {
+	private int id;
+	private String data;
+	private Node previousNode;
+	private Node nextNode;
+
+	public Node(int id, String data) {
+		this.id = id;
+		this.data = data;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getData() {
+		return data;
+	}
+
+	public Node getPreviousNode() {
+		return previousNode;
+	}
+
+	public Node getNextNode() {
+		return nextNode;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public void setPreviousNode(Node previousNode) {
+		this.previousNode = previousNode;
+	}
+
+	public void setNextNode(Node nextNode) {
+		this.nextNode = nextNode;
+	}
+
+	@Override
+	public String toString() {
+		return "Node [id=" + id + ", data=" + data + "]";
+	}
+
+}

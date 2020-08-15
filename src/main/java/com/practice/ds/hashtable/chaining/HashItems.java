@@ -7,7 +7,7 @@ public class HashItems {
 
 	public HashItems(int key, int val) {
 		super();
-		this.key = key;
+		this.key = key; 
 		this.val = val;
 	}
 
