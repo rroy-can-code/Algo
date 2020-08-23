@@ -30,8 +30,7 @@ public class QuickSelect {
 		swap(lastIndex, pivot);
 		for (int i = firstIndex; i < lastIndex; i++) {
 			// If we reverse the condition we can
-			// find smallest elements instead of
-			// largest elts
+			// find smallest elements instead of largest elts
 			if (nos[i] > nos[lastIndex]) {
 				swap(i, firstIndex);
 				firstIndex++;
