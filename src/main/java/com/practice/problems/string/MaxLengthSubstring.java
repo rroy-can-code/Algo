@@ -31,7 +31,7 @@ public class MaxLengthSubstring {
      * Longest substring without repeating characters
      */
     public String longestSubstringWithoutRepeatingChars(String str) {
-        str=str.toLowerCase().trim();
+        str = str.toLowerCase().trim().replaceAll("\\s", "");
         int i;
         int n = str.length();
         int st = 0;
