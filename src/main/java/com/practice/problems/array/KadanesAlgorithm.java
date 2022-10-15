@@ -2,6 +2,11 @@ package com.practice.problems.array;
 
 /**
  * Largest sum contiguous subarray
+ *
+ * Here 2 friends Ram(maxSoFar) and Shyam (maxEndingHere)
+ * Ram is saying Shyam that you take every val from array and reset yourself when your value is <0 and keep track of the index also
+ * I will update myself when your value is greater than mine
+ * Finally I will return max value
  */
 public class KadanesAlgorithm {
     public int maxSubArraySum(int[] arr) {
@@ -13,13 +18,13 @@ public class KadanesAlgorithm {
             maxEndingHere += arr[i];
 
             if (maxSoFar < maxEndingHere) {
-                maxSoFar = maxEndingHere;
+                maxSoFar = maxEndingHere;// Ram is resetting value as Shyam's  value is gt him
                 start = s;
                 end = i;
             }
             if (maxEndingHere < 0) {
-                maxEndingHere = 0;
-                s = i + 1;
+                maxEndingHere = 0; //shyam is resetting value
+                s = i + 1;// and current index is rejected with a hope that from next index it will start getting max value
             }
         }
         System.out.println("Maximum contiguous sum is "
