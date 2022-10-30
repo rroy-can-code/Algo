@@ -27,6 +27,23 @@ public class MaxLengthSubstring {
         return maxLen;
     }
 
+    public int longestLengthSubstringUsingSB(String string) {
+        StringBuilder sb = new StringBuilder();
+        int n = string.length();
+        int left = 0;
+        int right = 0;
+        int len = 0;
+        while (right < n) {
+            String s = String.valueOf(right);
+            int index = sb.indexOf(s, left);
+            if (index > -1) left = index + 1;
+            sb.append(s);
+            right++;
+            len = Math.max(len, right - left);
+        }
+        return len;
+    }
+
     /**
      * Longest substring without repeating characters
      */
