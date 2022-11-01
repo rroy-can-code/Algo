@@ -1,4 +1,4 @@
-package com.practice.problems.array;
+package com.practice.ds.array;
 
 /**
  * Determine max sum of k consecutive elements in an array

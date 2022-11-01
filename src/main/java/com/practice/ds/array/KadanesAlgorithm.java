@@ -1,4 +1,4 @@
-package com.practice.problems.array;
+package com.practice.ds.array;
 
 /**
  * Largest sum contiguous subarray

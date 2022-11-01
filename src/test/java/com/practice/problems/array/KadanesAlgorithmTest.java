@@ -1,5 +1,6 @@
 package com.practice.problems.array;
 
+import com.practice.ds.array.KadanesAlgorithm;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
