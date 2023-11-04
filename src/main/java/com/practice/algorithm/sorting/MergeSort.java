@@ -4,95 +4,94 @@ import java.util.Scanner;
 
 public class MergeSort {
 
-	public static void main(String[] args) {
-		System.out.println("Enter the size of array:");
-		Scanner sc = new Scanner(System.in);
-		int size = sc.nextInt();
-		int a[] = new int[size];
-		System.out.println("Enter the elements of array:");
-		for (int i = 0; i < size; i++) {
-			a[i] = sc.nextInt();
-		}
-		sc.close();
-		System.out.println("Given Array");
-		printArray(a);
+    public static void main(String[] args) {
+        System.out.println("Enter the size of array:");
+        Scanner sc = new Scanner(System.in);
+        int size = sc.nextInt();
+        int[] arr = new int[size];
+        System.out.println("Enter the elements of array:");
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+        sc.close();
+        System.out.println("Given Array");
+        printArray(arr);
 
-		MergeSort ob = new MergeSort();
-		ob.sort(a, 0, a.length - 1);
+        MergeSort ob = new MergeSort();
+        ob.sort(arr, 0, arr.length - 1);
 
-		System.out.println("\nSorted array");
-		printArray(a);
+        System.out.println("\nSorted array");
+        printArray(arr);
 
-	}
+    }
 
-	private void sort(int[] arr, int left, int right) {
-		{
-			if (left < right) {
-				// Find the middle point
-				int mid = (left + right) / 2;
+    private static void printArray(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
 
-				// Sort first and second halves
-				sort(arr, left, mid);
-				sort(arr, mid + 1, right);
+    }
 
-				// Merge the sorted halves
-				merge(arr, left, mid, right);
-			}
-		}
-	}
+    private void sort(int[] arr, int left, int right) {
+        {
+            if (left < right) {
+                // Find the middle point
+                int mid = left + (right - left) / 2;
 
-	private void merge(int[] arr, int l, int m, int r) {
-		int n1 = m - l + 1;
-		int n2 = r - m;
+                //recursively dividing the array
+                sort(arr, left, mid);
+                sort(arr, mid + 1, right);
 
-		/* Create temp arrays */
-		int L[] = new int[n1];
-		int R[] = new int[n2];
+                // Merge the sorted halves
+                merge(arr, left, mid, right);
+            }
+        }
+    }
 
-		/* Copy data to temp arrays */
-		for (int i = 0; i < n1; ++i)
-			L[i] = arr[l + i];
-		for (int j = 0; j < n2; ++j)
-			R[j] = arr[m + 1 + j];
+    private void merge(int[] arr, int left, int mid, int right) {
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
 
-		/* Merge the temp arrays */
+        /* Create temp arrays */
+        int[] leftArr = new int[n1];
+        int[] rightArr = new int[n2];
 
-		// Initial indexes of first and second subarrays
-		int i = 0, j = 0;
+        /* Copy data to temp arrays */
+		System.arraycopy(arr, left + 0, leftArr, 0, n1);
+        for (int j = 0; j < n2; ++j)
+            rightArr[j] = arr[mid + 1 + j];
 
-		// Initial index of merged subarry array
-		int k = l;
-		while (i < n1 && j < n2) {
-			if (L[i] <= R[j]) {
-				arr[k] = L[i];
-				i++;
-			} else {
-				arr[k] = R[j];
-				j++;
-			}
-			k++;
-		}
+        /* Merge the temp arrays */
 
-		/* Copy remaining elements of L[] if any */
-		while (i < n1) {
-			arr[k] = L[i];
-			i++;
-			k++;
-		}
+        // Initial indexes of first and second subarrays
+        int i = 0, j = 0;
 
-		/* Copy remaining elements of R[] if any */
-		while (j < n2) {
-			arr[k] = R[j];
-			j++;
-			k++;
-		}
-	}
+        // Initial index of merged subarry array
+        int k = left;
+        while (i < n1 && j < n2) {
+            if (leftArr[i] <= rightArr[j]) {
+                arr[k] = leftArr[i];
+                i++;
+            } else {
+                arr[k] = rightArr[j];
+                j++;
+            }
+            k++;
+        }
 
-	private static void printArray(int[] a) {
-		for (int i = 0; i < a.length; i++) {
-			System.out.println(a[i]);
-		}
+        /* Copy remaining elements of leftArrif any */
+        while (i < n1) {
+            arr[k] = leftArr[i];
+            i++;
+            k++;
+        }
 
-	}
+        /* Copy remaining elements of R[] if any */
+        while (j < n2) {
+            arr[k] = rightArr[j];
+            j++;
+            k++;
+        }
+    }
 
 }
