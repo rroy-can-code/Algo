@@ -1,29 +1,6 @@
 package com.practice.algorithm.sorting;
 
-import java.util.Scanner;
-
-public class MergeSort {
-
-    public static void main(String[] args) {
-        System.out.println("Enter the size of array:");
-        Scanner sc = new Scanner(System.in);
-        int size = sc.nextInt();
-        int[] arr = new int[size];
-        System.out.println("Enter the elements of array:");
-        for (int i = 0; i < size; i++) {
-            arr[i] = sc.nextInt();
-        }
-        sc.close();
-        System.out.println("Given Array");
-        printArray(arr);
-
-        MergeSort ob = new MergeSort();
-        ob.sort(arr, 0, arr.length - 1);
-
-        System.out.println("\nSorted array");
-        printArray(arr);
-
-    }
+public class MergeSort implements Sort<Integer> {
 
     private static void printArray(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
@@ -32,15 +9,15 @@ public class MergeSort {
 
     }
 
-    private void sort(int[] arr, int left, int right) {
+    private void mergeSort(Integer[] arr, int left, int right) {
         {
             if (left < right) {
                 // Find the middle point
                 int mid = left + (right - left) / 2;
 
                 //recursively dividing the array
-                sort(arr, left, mid);
-                sort(arr, mid + 1, right);
+                mergeSort(arr, left, mid);
+                mergeSort(arr, mid + 1, right);
 
                 // Merge the sorted halves
                 merge(arr, left, mid, right);
@@ -48,7 +25,7 @@ public class MergeSort {
         }
     }
 
-    private void merge(int[] arr, int left, int mid, int right) {
+    private void merge(Integer[] arr, int left, int mid, int right) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
 
@@ -57,7 +34,8 @@ public class MergeSort {
         int[] rightArr = new int[n2];
 
         /* Copy data to temp arrays */
-		System.arraycopy(arr, left + 0, leftArr, 0, n1);
+        for (int j = 0; j < n1; j++)
+            leftArr[j] = arr[left + j];
         for (int j = 0; j < n2; ++j)
             rightArr[j] = arr[mid + 1 + j];
 
@@ -94,4 +72,8 @@ public class MergeSort {
         }
     }
 
+    @Override
+    public void sort(Integer[] arr) {
+        mergeSort(arr, 0, arr.length - 1);
+    }
 }
